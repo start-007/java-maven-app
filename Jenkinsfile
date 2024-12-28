@@ -24,8 +24,12 @@ pipeline {
                 withCredentials([
                     usernamePassword(credentials:'server-credentials',usernameVariable:'USER',passwordVariable:'PWD')
                 ]){
-                   echo " user- ${USER} password- ${PWD}"
-                   echo "got credentials"
+                   if (USER && PWD) {
+                        echo "user: ${USER}, password: ${PWD}"
+                        echo "got credentials"
+                    } else {
+                        echo "Credentials not found or not set correctly."
+                    }
                 }
             }
         }
