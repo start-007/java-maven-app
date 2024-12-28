@@ -22,10 +22,10 @@ pipeline {
             steps {
                 echo "build image"
                 withCredentials([
-                    usernamePassword(credentials:'server-credentials',usernameVariable:'USER',passwordVariable:'PWD')
-                ]){
-                   echo " user- ${USER} password- ${PWD}"
-                   echo "got credentials"
+                        usernamePassword(credentialsId: 'server-credentials', usernameVariable: 'USER', passwordVariable: 'PWD')
+                    ]) {
+                        echo "user: ${USER}, password: ${PWD}"
+                        echo "Got credentials"
                 }
             }
         }
