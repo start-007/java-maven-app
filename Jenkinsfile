@@ -1,3 +1,5 @@
+def gv
+
 pipeline {
     agent any
     environment{
@@ -11,8 +13,13 @@ pipeline {
     stages {
         stage("init") {
             steps {
+                
                 echo "Initializing "
                 echo "Current version ${VERSION}"
+                script{
+                    gv= load "script.groovy"
+                    gv.initFunc()
+                }
             }
         }
         stage("build jar") {
@@ -25,6 +32,7 @@ pipeline {
                echo "building jar"
                echo "Global scoped credentials ${SERVER_CREDENTIALS_USR} ${SERVER_CREDENTIALS_PSW}"
                 echo "Got global credentials"
+                gv.buildFunc()
             }
         }
         stage("build image") {
