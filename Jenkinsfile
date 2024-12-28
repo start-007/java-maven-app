@@ -49,10 +49,17 @@ pipeline {
             }
         }
         stage("deploy") {
-           
+            input{
+                message "Which env to deploy"
+                ok "Done"
+                parameters{
+                    choice(name: 'ENV',choices:['dev','qa','prod'],description:'')
+                }
+            }
             steps {
                 echo "deploying"
                 echo "Deploying version ${params.choice}"
+                echo "Selected env ${ENV}"
             }
         }
     }   
