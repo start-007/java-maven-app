@@ -32,7 +32,9 @@ pipeline {
                echo "building jar"
                echo "Global scoped credentials ${SERVER_CREDENTIALS_USR} ${SERVER_CREDENTIALS_PSW}"
                 echo "Got global credentials"
-                gv.buildFunc()
+                script{
+                    gv.buildFunc()
+                }
             }
         }
         stage("build image") {
