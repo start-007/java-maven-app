@@ -14,7 +14,8 @@ pipeline {
         stage("build jar") {
             steps {
                echo "building jar"
-               sh "Global scoped credentials ${SERVER_CREDENTIALS}"
+            //    sh "Global scoped credentials ${SERVER_CREDENTIALS}"
+                echo "Got global credentials"
             }
         }
         stage("build image") {
@@ -23,7 +24,8 @@ pipeline {
                 withCredentials([
                     usernamePassword(credentails:'server-credentials',usernameVariable:USER,passwordVariable:PWD)
                 ]){
-                    sh " user- ${USER} password- ${PWD}"
+                   // sh " user- ${USER} password- ${PWD}"
+                   echo "got credentials"
                 }
             }
         }
