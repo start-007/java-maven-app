@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment{
         VERSION = "1.9.0"
-        SERVER_CREDENTIALS= credentials("server-credentials")
+        SERVER_CREDENTIALS= credentials("github-credentials")
     }
     stages {
         stage("init") {
