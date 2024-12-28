@@ -4,6 +4,10 @@ pipeline {
         VERSION = "1.9.0"
         SERVER_CREDENTIALS= credentials("github-credentials")
     }
+    parameters{
+        choice(name:"choice", choices:["1.2.0","2.3.4","2.32"],description:"")
+        booleanParam(name:"expected", defaultValue:true,description:"")
+    }
     stages {
         stage("init") {
             steps {
@@ -12,6 +16,11 @@ pipeline {
             }
         }
         stage("build jar") {
+            when{
+                expression{
+                    params.expected
+                }
+            }
             steps {
                echo "building jar"
                echo "Global scoped credentials ${SERVER_CREDENTIALS_USR} ${SERVER_CREDENTIALS_PSW}"
@@ -33,6 +42,7 @@ pipeline {
            
             steps {
                 echo "deploying"
+                echo "Deploying version ${params.choice}"
             }
         }
     }   
