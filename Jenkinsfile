@@ -14,7 +14,7 @@ pipeline {
         stage("build jar") {
             steps {
                echo "building jar"
-               sh "Global scoped credentials ${SERVER_CREDENTIALS_USR} ${SERVER_CREDENTIALS_PSW}"
+               echo "Global scoped credentials ${SERVER_CREDENTIALS_USR} ${SERVER_CREDENTIALS_PSW}"
                 echo "Got global credentials"
             }
         }
