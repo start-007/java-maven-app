@@ -30,11 +30,7 @@ pipeline {
             }
         }
         stage("deploy") {
-            when{
-                expression{
-                    CODE_CHANGES==true
-                }
-            }
+           
             steps {
                 echo "deploying"
             }
