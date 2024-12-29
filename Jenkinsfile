@@ -32,7 +32,6 @@ pipeline {
                     ]) {
                     
                     sh "docker build -t starteja007/java-maven-app:1.0 ."
-                    sh "sudo usermod -a -G docker jenkins"
                     sh "echo ${PWD} | docker login -u ${USER} --password-stdin"
                     sh "docker push starteja007/java-maven-app:1.0 "
 
