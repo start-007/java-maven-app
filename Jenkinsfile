@@ -60,6 +60,20 @@ pipeline {
                
             }
         }
+        stage("commit version"){
+            steps{
+                echo "comming version"
+                    withCredentials([
+                        usernamePassword(credentialsId: 'github-credentials', usernameVariable: 'USER', passwordVariable: 'PWD')
+                    ]) {
+
+                        sh "git remote set-url origin https://${USER}:${PWD}@github.com/start-007/java-maven-app.git"
+                        sh "git add ."
+                        sh "git commit -m 'CI:Commit' "
+                        sh "git push origin HEAD:jobs"
+                    }
+            }
+        }
     }   
     post{
         success{
