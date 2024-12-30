@@ -5,7 +5,7 @@ pipeline {
     tools{
         maven 'Maven'
     }
-   
+   // comment
 
     stages {
         stage("init") {
