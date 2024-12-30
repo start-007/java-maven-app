@@ -66,7 +66,8 @@ pipeline {
                     withCredentials([
                         usernamePassword(credentialsId: 'github-credentials', usernameVariable: 'USER', passwordVariable: 'PWD')
                     ]) {
-
+                        sh "git config --global user.email=jenkins@example.com"
+                        sh "git config --global user.name=jenkins"
                         sh "git remote set-url origin https://${USER}:${PWD}@github.com/start-007/java-maven-app.git"
                         sh "git add ."
                         sh "git commit -m 'CI:Commit' "
