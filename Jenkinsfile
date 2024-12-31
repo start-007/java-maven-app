@@ -21,6 +21,7 @@ pipeline {
                 }
             }
         }
+        //trigger
         stage("increment version"){
             steps{
                 script{
